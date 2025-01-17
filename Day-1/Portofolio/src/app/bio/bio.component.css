@@ -1,0 +1,30 @@
+.bio {
+    position: relative;
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove any default margins */
+    overflow: hidden; /* Prevent overflow from content */
+}
+
+.bio p {
+    margin: 20px 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.bio h1 {
+    font-size: 3rem;
+    margin-top: 30vh; /* Adjust spacing as needed */
+}
+.btn button {
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for size */
+    cursor: pointer; /* Pointer cursor for hover */
+    font-size: 16px; /* Adjust font size */
+    display: inline-flex; /* Inline and flexible for alignment */
+    align-items: center; /* Center the icon and text vertically */
+    gap: 8px; /* Space between text and icon */
+}

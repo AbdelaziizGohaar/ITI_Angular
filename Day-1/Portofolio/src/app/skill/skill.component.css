@@ -1,0 +1,7 @@
+.skill {
+    position: relative;
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove any default margins */
+    overflow: hidden; /* Prevent overflow from content */
+}
