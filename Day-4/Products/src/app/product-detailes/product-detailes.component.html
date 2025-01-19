@@ -1,0 +1,51 @@
+<!-- 
+<div class="container my-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      @for(ViewProduct of ViewProductsinfo; track ViewProduct.id){
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            @if (ViewProduct.availabilityStatus == "In Stock") { 
+              <span class="badge" [ngClass]="'bg-success'">IN Stock</span>
+            }@else {
+              <span class="badge" [ngClass]="ViewProduct.role === 'moderator' ? 'bg-warning text-dark' : 'bg-danger'">
+                  {{ViewProduct.availabilityStatus}}
+              </span>
+            }
+            <img src="{{ ViewProduct.images }}" class="card-img-top" alt="{{ ViewProduct.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ ViewProduct.title }}</h5>
+              <p class="card-text">{{ ViewProduct.description }}</p>
+              <p class="ViewProduct-price"> ${{ ViewProduct.price }}</p>          
+              <a href="#" class="btn btn-primary">Add To Chart</a>
+            </div>
+          </div>
+      </div>
+      }
+    </div>
+  </div> -->
+
+
+  <div class="container product-details">
+    <div class="row">
+      <!-- Product Details on the Left -->
+      <div class="col-md-6 product-info">
+        @if (ViewProduct?.availabilityStatus == "In Stock") { 
+          <span class="badge" [ngClass]="'bg-success'">IN Stock</span>
+        } @else {
+          <span class="badge" [ngClass]="'bg-danger'">
+            {{ViewProduct?.availabilityStatus}}
+          </span>
+        }
+        <h5 class="product-title">{{ ViewProduct?.title}}</h5>
+        <p class="product-description">{{ ViewProduct?.description}}/p>
+        <p class="product-price"> <strong>$ {{ ViewProduct?.price }}</strong></p>
+        <a href="#" class="btn btn-secondary">Buy Now</a>
+        <a href="#" class="btn btn-primary">Add To Cart</a>
+      </div>  
+      <div class="col-md-6 product-image">
+        <img src="{{ ViewProduct?.thumbnail }}" class="img-fluid" >
+        </div>
+    </div>
+  </div>
+  
+   

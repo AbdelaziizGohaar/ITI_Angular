@@ -1,0 +1,98 @@
+/* General Card Styling */
+.card {
+    background-color: #f8f9fa; /* Light gray background for the card */
+    border: 1px solid #dee2e6; /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden; /* Prevents content overflow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
+    margin: 1rem; /* Space around cards */
+  }
+  
+  /* Card Hover Effects */
+  .card:hover {
+    transform: translateY(-5px); /* Lift card slightly */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  }
+  
+  /* Card Image */
+  .card-img-top {
+    height: 180px; /* Fixed height for uniformity */
+    object-fit: cover; /* Ensure image fits nicely */
+    border-bottom: 1px solid #dee2e6; /* Separator line */
+  }
+  
+  /* Card Title and Price */
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #212529; /* Dark text */
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between; /* Space between name and price */
+    align-items: center;
+  }
+  
+  .product-price {
+    font-weight: bold;
+    color: #28a745; /* Green color for the price */
+    font-size: 1.2rem;
+  }
+  
+  /* Card Text */
+  .card-text {
+    color: #6c757d; /* Muted text */
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Card Button */
+  .card .btn {
+    background-color: #007bff; /* Bootstrap primary blue */
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card .btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Badge Styling */
+  .badge {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .badge.bg-success {
+    background-color: #28a745; /* Green for in-stock */
+    color: #fff; /* White text */
+  }
+  
+  .badge.bg-danger {
+    background-color: #dc3545; /* Red for out-of-stock */
+    color: #fff; /* White text */
+  }
+  
+  .badge.bg-warning {
+    background-color: #ffc107; /* Yellow for warnings */
+    color: #212529; /* Dark text */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 576px) {
+    .card {
+      width: 100%; /* Full width for smaller screens */
+    }
+  
+    .card-img-top {
+      height: 150px; /* Smaller height for mobile */
+    }
+  }
+  

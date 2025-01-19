@@ -1,0 +1,118 @@
+/* .navbar {
+    background-color: #3f79b4;
+    box-shadow: 0 4px 6px rgba(7, 0, 0, 0.288);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+  
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    margin-right: 20px;
+    margin: 10px 0;
+    color: #000000;
+    transition: color 0.3s, background-color 0.3s;
+    text-decoration: none;
+  
+  }
+  
+  .navbar-nav .nav-link.active-link {
+    color: #fafbfc;
+    background-color: #01111a;
+    border-radius: 4px;
+    padding: 10px;    
+  }
+  
+  
+  #list + * {
+    margin-left: 1000px;
+  }
+
+ */
+/* General Navbar Styling */
+
+/* General Navbar Styling */
+
+  .navbar {
+    background-color: #3f79b4;
+    box-shadow: 0 4px 6px rgba(7, 0, 0, 0.288);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+  
+  }
+  
+  /* Navbar Brand */
+  .navbar-nav .nav-link {
+    font-size: 1.8rem; /* Larger font size */
+    font-weight: bold; /* Make the brand text bold */
+    color: #000000; /* White color */
+    text-transform: uppercase; /* Make text uppercase */
+    letter-spacing: 0.5px; /* Add slight letter spacing */
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Blue color on hover */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  /* Navbar Links */
+  .navbar-nav .nav-link {
+    font-size: 1.2rem; /* Slightly larger font size */
+    color: #000000; /* Light gray text */
+    margin-right: 1.5rem; /* Add spacing between links */
+    text-transform: capitalize; /* Capitalize each link */
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff; /* Blue color on hover */
+  }
+  
+  .navbar-nav .active-link {
+    color: #007bff; /* Active link in blue */
+    font-weight: bold; /* Highlight active link */
+    border-bottom: 2px solid #007bff; /* Add a blue underline */
+  }
+  
+  /* Navbar Toggler (for mobile view) */
+  .navbar-toggler {
+    border: none; /* Remove default border */
+    background-color: #007bff; /* Blue background for toggle button */
+    padding: 5px 10px; /* Add padding */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .navbar-toggler-icon {
+    filter: invert(1); /* Make the toggler icon white */
+  }
+  
+  /* Cart Icon */
+  .fa-cart-shopping {
+    color: #050505; /* White cart icon */
+    font-size: 1.4rem; /* Slightly larger size */
+    margin-left: 0.5rem; /* Add spacing */
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .fa-cart-shopping:hover {
+    color: #007bff; /* Blue on hover */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .navbar-nav .nav-link {
+      font-size: 1rem; /* Adjust font size for smaller screens */
+      margin: 0.5rem 0; /* Add vertical spacing */
+      text-align: center; /* Center-align text */
+    }
+  
+    .navbar {
+      padding: 0.5rem; /* Reduce padding */
+    }
+  }
+  
