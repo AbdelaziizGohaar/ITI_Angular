@@ -1,0 +1,18 @@
+<div class="col">
+    <img src={{userinfo.image}} class="card-img-top" alt="...">
+    <div class="card-body">
+      <h3 class="card-badge">
+      @if (userinfo.role == "admin") { 
+        <span class="badge" [ngClass]="'bg-danger'">admin</span>
+      }@else {
+        <span class="badge" [ngClass]="userinfo.role === 'moderator' ? 'bg-warning text-dark' : 'bg-success'">
+            {{userinfo.role}}
+        </span>
+      }
+      </h3>
+      <h5 class="card-title">{{userinfo.firstName + ' ' + userinfo.maidenName + ' ' + userinfo.lastName}}</h5>
+      <p class="card-text">Email: {{userinfo.email}}</p>
+      <p class="card-text">Phone: {{userinfo.phone}}</p>
+      <p class="card-text">BirthDate: {{userinfo.birthDate}}</p>
+  </div>
+ </div>

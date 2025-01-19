@@ -1,0 +1,10 @@
+.taskwrapper{
+    border: 2px solid red;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color:#fffcfc;
+  }
+  hr{
+    border:1px solid yellow;
+  }

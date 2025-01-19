@@ -10,6 +10,7 @@ export class HeroComponent {
 
   name :  string ='Abdelaziz Gohar';
   jTitle :  string ='Software Engineer';
-  backImag : string ='https://images6.alphacoders.com/131/1318956.jpeg';
+  // backImag : string ='https://images6.alphacoders.com/131/1318956.jpeg';
+  backImag : string ='./img/zezo2.jpeg';
 
 }
