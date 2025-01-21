@@ -1,181 +1,92 @@
 import { Component, inject } from '@angular/core';
-import { UserCartitemComponent } from '../user-cartitem/user-cartitem.component';
 import { CartCounterService } from '../services/cart-counter.service';
 import { ProductRequestService } from '../services/product-request.service';
 import { CardServiceService } from '../services/card-service.service';
 
 @Component({
   selector: 'app-user-charts',
-  imports: [],
   templateUrl: './user-charts.component.html',
-  styleUrl: './user-charts.component.css'
+  styleUrl: './user-charts.component.css',
 })
 export class UserChartsComponent {
- 
   CartCounterService = inject(CartCounterService);
 
-  /// list of Api Products 
-  productsinfo :Array<any> = [] ;
-
+  // List of API Products
+  productsinfo: Array<any> = [];
   cartCount: number = 0;
   cartCounterService = inject(CartCounterService);
   cardService = inject(CardServiceService);
 
-  /// list of ids of products in the cart
-   ids_list = inject(CartCounterService).productlist;
+  // List of IDs of products in the cart
+  ids_list = inject(CartCounterService).productlist;
 
-    /// empty list of filtered
-    filterd_list :Array<any> = [] ;
+  // Empty list of filtered
+  filterd_list: Array<any> = [];
+  productCounters: { [key: number]: number } = {}; // Object to hold counters for each product
 
-  constructor(private ProductRequestService :ProductRequestService) {
-    console.log("ids list is ",this.ids_list);
-
-    // this.cardService.getCardId().subscribe((ids: string[]) => {
-    //   this.ids_list = ids;
-    //   this.filterProducts();
-    // });
+  constructor(private ProductRequestService: ProductRequestService) {
+    console.log('ids list is ', this.ids_list);
   }
 
   ngOnInit() {
-    console.log("Before API Call");
+    console.log('Before API Call');
 
     this.ProductRequestService.getProducts().subscribe(
       (res) => {
-        console.log("Inside Subscribe - API Response:", res);
+        console.log('Inside Subscribe - API Response:', res);
         this.productsinfo = res.products;
-        console.log("Inside Subscribe - Products Info:", this.productsinfo);
-  
+        console.log('Inside Subscribe - Products Info:', this.productsinfo);
+
         if (this.productsinfo?.length && this.ids_list?.length) {
           this.filterd_list = this.productsinfo.filter((product) =>
-            this.ids_list?.includes(product.id.toString()) // Convert product.id to string
+            this.ids_list?.includes(product.id.toString())
           );
+
+          this.filterd_list.forEach((product) => {
+            this.productCounters[product.id] = 1; // Default to 1
+          });
         }
         console.log('Filtered Products:', this.filterd_list);
       },
       (error) => {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       }
     );
-  
-    console.log("After API Call the products lenght", this.productsinfo);    
-  }
 
-
-  increaseCounter(id:any){
-    this.CartCounterService.getCounter().subscribe((res) =>this.cartCount = res);
-    this.CartCounterService.setCounter(this.cartCount + 1);
-    // this.CartCounterService.productlist?.push(this.product);
-  }
-
-
-  // filterProducts() {
-  //   if (this.productsinfo?.length && this.ids_list?.length) {
-  //     this.filterd_list = this.productsinfo.filter((product) =>
-  //       this.ids_list?.includes(product.id.toString()) // Convert product.id to string
-  //     );
-  //   }
-  //   console.log('Filtered Products:', this.filterd_list);
-
-  //   }
-
-
-    decreaseCounter(productId: number) {
-
-    }
-  
-
-
-    deleteCard(productId: number) {
-
-    }
-  
-
-  }
-
-   
-
- /*
- 
- products: Array<any> = [];
-  cardProductIds: Array<string> = [];
-  filteredProducts: Array<any> = [];
-  productCounters: { [key: number]: number } = {};
-  totalCounter: number = 0;
-
-  counterService = inject(CounterService);
-  productList = inject(HttpService);
-  cardService = inject(CardServiceService);
-
-  ngOnInit() {
-    // get card product ids
-    this.cardService.getCardId().subscribe((ids: string[]) => {
-      this.cardProductIds = ids;
-      this.filterProducts();
-    });
-
-    // get all products
-    this.productList.getProductList().subscribe((res) => {
-      this.products = res.products;
-      this.filterProducts();
-    });
-
-    // total counter
-    this.counterService.getCounter().subscribe((res) => (this.totalCounter = res));
-  }
-
-  filterProducts() {
-    if (this.products.length && this.cardProductIds.length) {
-      this.filteredProducts = this.products.filter((product) =>
-        this.cardProductIds.includes(product.id.toString())
-      );
-
-      this.filteredProducts.forEach((product) => {
-        if (!(product.id in this.productCounters)) {
-          this.productCounters[product.id] = 1;
-        }
-      });
-
-      console.log('Filtered Products:', this.filteredProducts);
-      console.log('Product Counters:', this.productCounters);
-    }
-  }
-
-  decreaseCounter(productId: number) {
-    if (this.productCounters[productId] > 1) {
-      this.productCounters[productId] -= 1;
-      this.totalCounter -= 1;
-      this.counterService.setCounter(this.totalCounter);
-    }
+    console.log('After API Call the products length', this.productsinfo);
   }
 
   increaseCounter(productId: number) {
-    this.productCounters[productId] += 1;
-    this.totalCounter += 1;
-    this.counterService.setCounter(this.totalCounter);
+    if (this.productCounters[productId] != null) {
+      this.productCounters[productId] += 1; // Increase counter
+      this.cartCount += 1; // Update total cart count if needed
+    }
+    console.log(`Increased counter for product ${productId}:`, this.productCounters[productId]);
+  }
+
+  decreaseCounter(productId: number) {
+    if (this.productCounters[productId] != null && this.productCounters[productId] > 1) {
+      this.productCounters[productId] -= 1; // Decrease counter
+      this.cartCount -= 1; // Update total cart count if needed
+    }
+    console.log(`Decreased counter for product ${productId}:`, this.productCounters[productId]);
   }
 
   deleteCard(productId: number) {
-    if (this.productCounters[productId]) {
-      // decrease the total counter by the quantity of the product being deleted
-      this.totalCounter -= this.productCounters[productId];
-      this.counterService.setCounter(this.totalCounter);
+
+    this.filterd_list = this.filterd_list.filter((product) => product.id !== productId);
+
+
+    if (this.productCounters[productId] != null) {
+      this.cartCount -= this.productCounters[productId];
     }
 
-    this.filteredProducts = this.filteredProducts.filter(
-      (product) => product.id !== productId
-    );
 
     delete this.productCounters[productId];
 
-    this.cardProductIds = this.cardProductIds.filter(
-      (id) => id !== productId.toString()
-    );
 
-    console.log(`Product with ID ${productId} deleted.`);
-    console.log('Updated Total Counter:', this.totalCounter);
+    this.ids_list = this.ids_list?.filter((id) => id !== productId.toString());
+
+    console.log(`Deleted product ${productId}. Updated filtered list:`, this.filterd_list);
   }
- 
- */
-
-
-
+}

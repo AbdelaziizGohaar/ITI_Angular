@@ -1,54 +1,4 @@
-<!-- <header>
-    <h1>Cart</h1>
-</header>
-<main>    
-    <div class="container mt-5">
-        <h2 class="mb-4">Cart</h2>
-        <table class="table table-bordered align-middle">
-          <thead class="table-light">
-            <tr>
-              <th scope="col">Description</th>
-              <th scope="col" class="text-center">Quantity</th>
-              <th scope="col" class="text-center">Remove</th>
-              <th scope="col" class="text-end">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for(product of filterd_list ; track $index) {
-                <tr>
-                    <th scope="col">Description</th>
-                    <th scope="col" class="text-center">Quantity</th>
-                    <th scope="col" class="text-center">Remove</th>
-                    <th scope="col" class="text-end">Price</th>                  
-                </tr>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <img src= alt="Headphones" class="img-thumbnail" style="width: 70px; height: 70px; object-fit: cover;">
-                        <div class="ms-3">
-                          <h6 class="mb-0">Headphones</h6>
-                          <small class="text-muted">Product Code: MLSB</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center">
-                      <div class="input-group" style="max-width: 120px; margin: auto;">
-                        <button class="btn btn-dark btn-sm">+</button>
-                        <input type="text" class="form-control text-center" value="1" readonly>
-                        <button class="btn btn-dark btn-sm">-</button>
-                      </div>
-                    </td>
-                    <td class="text-center">
-                      <button class="btn btn-danger btn-sm">×</button>
-                    </td>
-                     <td class="text-end"> ${{product.Price}}</td> -->
-                <!-- </tr>
-            }
-        </tbody>        
-    </table>
-</div>  -->
-
+<!-- 
 <h3 style="margin: 10px">Card</h3>
 <div class="container m-5">
   @for (product of filterd_list; track product) {
@@ -78,5 +28,44 @@
   }
   <button class="btn btn-light">Check out</button>
 </div>
+
+ -->
+
+ 
+ <h3 style="margin: 10px">Card</h3>
+ <div class="container m-5">
+
+   <!-- <div *ngFor="let product of filterd_list; trackBy: trackProduct"> -->
+    <div>
+      @for(product of filterd_list; track product) {
+        <div class="product-card">
+          <div class="product-box">
+            <div class="product-image">
+              <img [src]="product.thumbnail" [alt]="product.title" class="main-image" />
+            </div>
+            <div class="product-details">
+              <div class="product-title">{{ product.title }}</div>
+              <div class="product-price">${{ product.price }}</div>
+            </div>
+            <div class="quantity-control">
+              <button (click)="decreaseCounter(product.id)">-</button>
+              <input
+                type="text"
+                [value]="productCounters[product.id] || 1"
+                min="1"
+                disabled
+                style="font-weight: bold; color: black"
+              />
+              <button (click)="increaseCounter(product.id)">+</button>
+              <button (click)="deleteCard(product.id)">x</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+   <button class="btn btn-light" >Check out</button>
+ </div>
+ 
+
 
 
