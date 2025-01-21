@@ -1,0 +1,21 @@
+<div class="card" style="width: 18rem;">
+  @if (product?.availabilityStatus == "In Stock") { 
+    <span class="badge" [ngClass]="'bg-success'">IN Stock</span>
+  }@else {
+    <span class="badge" [ngClass]="product?.availabilityStatus === 'moderator' 
+    ? 'bg-warning text-dark' : 'bg-danger'">
+        {{product?.availabilityStatus}}
+    </span>
+  }
+  <img src="{{ product?.thumbnail }}" class="card-img-top" alt="{{ product?.title }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ product?.title }}</h5>
+    <p class="card-text">{{ product?.description}}</p>
+    <p class="product-price"> ${{ product?.price }}</p>
+
+    <button class="btn btn-success me-3" (click)="handleView(product?.id)">View</button>
+    <a class="btn btn-primary" (click)="increaseCounter(product?.id)">Add To Chart</a>
+  </div>
+</div>
+
+ 

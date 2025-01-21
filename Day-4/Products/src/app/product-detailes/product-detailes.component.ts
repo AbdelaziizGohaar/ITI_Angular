@@ -11,7 +11,7 @@ import { NgClass } from '@angular/common';
 export class ProductDetailesComponent {
   @Input() id : string = ''; 
   productsinfo :Array<any> = [] ;
-  ViewProduct :Product | undefined; 
+  ViewProduct :any; 
 
 
   //  constructor(private activatedRoute: ActivatedRoute){}

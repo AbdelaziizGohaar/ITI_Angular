@@ -1,0 +1,16 @@
+<div class="product-info">
+    <img [src]="item.imageUrl || 'assets/default-product.jpg'" alt="{{ item.name }}" class="product-img">
+    <div class="product-details">
+        <p>{{ item.name }}</p>
+        <small>Product Code: {{ item.code }}</small>
+    </div>
+</div>
+<div class="quantity-controls">
+    <button class="btn" >-</button>
+    <span>{{ item.quantity }}</span>
+    <button class="btn" >+</button>
+</div>
+<button class="remove-btn" >✖</button>
+<div class="product-price">
+    <p>{{ item.price }}</p>
+</div>

@@ -1,0 +1,24 @@
+  <div class="container product-details">
+    <div class="row">
+      <!-- Product Details on the Left -->
+      <div class="col-md-6 product-info">
+        @if (ViewProduct?.availabilityStatus == "In Stock") { 
+          <span class="badge" [ngClass]="'bg-success'">IN Stock</span>
+        } @else {
+          <span class="badge" [ngClass]="'bg-danger'">
+            {{ViewProduct?.availabilityStatus}}
+          </span>
+        }
+        <h5 class="product-title">{{ ViewProduct?.title}}</h5>
+        <p class="product-description">{{ ViewProduct?.description}}/p>
+        <p class="product-price"> <strong>$ {{ ViewProduct?.price }}</strong></p>
+        <a href="#" class="btn btn-secondary">Buy Now</a>
+        <a href="#" class="btn btn-primary" (click)="increaseCountercart()">Add To Cart</a>
+      </div>  
+      <div class="col-md-6 product-image">
+        <img src="{{ ViewProduct?.thumbnail }}" class="img-fluid" >
+        </div>
+    </div>
+  </div>
+  
+   
