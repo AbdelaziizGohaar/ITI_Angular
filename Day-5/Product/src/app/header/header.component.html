@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >
+          <a class="nav-link" id="list" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >
             Products List
           </a>
           <a class="nav-link" routerLink="/User-rigester" routerLinkActive="active-link">
@@ -16,11 +16,18 @@
           <a class="nav-link" routerLink="/User-Login" routerLinkActive="active-link">
             Login
           </a>
-          <a class="nav-link" routerLink="/User-charts" routerLinkActive="active-link">
+
+          <!-- <a class="nav-link" routerLink="/User-charts" routerLinkActive="active-link">
             <i class="fas fa-cart-shopping"></i> {{cartCount}}
+          </a> -->
+
+          <a class="nav-link" routerLink="/User-charts" routerLinkActive="active-link">
+            <i class="fas fa-cart-shopping"></i>
+            <span class="cart-notification">{{cartCount}}</span>
           </a>
+          
         </div>
       </div>
-    </div>
+    </div> 
   </nav>
   
